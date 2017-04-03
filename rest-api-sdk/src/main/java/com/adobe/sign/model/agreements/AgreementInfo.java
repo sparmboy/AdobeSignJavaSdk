@@ -40,6 +40,7 @@ public class AgreementInfo   {
   private String name = null;
   private List<NextParticipantSetInfo> nextParticipantSetInfos = null;
   private List<ParticipantSetInfo> participantSetInfos = null;
+  private ExternalId externalId = null;
 
 public enum SecurityOptionsEnum {
   OPEN_PROTECTED("OPEN_PROTECTED"),
@@ -353,6 +354,24 @@ public enum StatusEnum {
     this.vaultingEnabled = vaultingEnabled;
   }
 
+    /**
+     * A resource identifier that can be used to uniquely identify the agreement resource in other apis
+     **/
+    @ApiModelProperty(required = true, value = "The externalId")
+    @JsonProperty("externalId")
+    /**
+     * @return String
+     **/
+    public ExternalId getExternalId() {
+        return externalId;
+    }
+    /**
+     *
+     * @param externalId
+     **/
+    public void setExternalId(ExternalId externalId) {
+        this.externalId = externalId;
+    }
   
 
   @Override
@@ -377,6 +396,7 @@ public enum StatusEnum {
     sb.append("    securityOptions: ").append(StringUtil.toIndentedString(securityOptions)).append("\n");
     sb.append("    status: ").append(StringUtil.toIndentedString(status)).append("\n");
     sb.append("    vaultingEnabled: ").append(StringUtil.toIndentedString(vaultingEnabled)).append("\n");
+    sb.append("    externalId: ").append(StringUtil.toIndentedString(externalId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
